@@ -5,9 +5,8 @@ class Spaceship:
     X_POS = (SCREEN_WIDTH // 2) - 40
     Y_POS = 500
 
-    def _init_(self):
-        self.image = SPACESHIP
-        self.image = pygame.transform.scale(self.image, (40, 60))
+    def __init__(self):
+        self.image = pygame.transform.scale(SPACESHIP, (40, 60))
         self.rect = self.image.get_rect()
         self.rect.x = self.X_POS
         self.rect.y = self.Y_POS
@@ -23,7 +22,7 @@ class Spaceship:
             self.move_down()
 
     def draw(self, screen):
-        screen.blit(self.image, self.rect)
+        screen.blit(self.image, (self.rect.x, self.rect.y))
 
 
     def move_left(self):
