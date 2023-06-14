@@ -10,6 +10,7 @@ class Spaceship:
         self.rect = self.image.get_rect()
         self.rect.x = self.X_POS
         self.rect.y = self.Y_POS
+        self.speed = 10
 
     def upadte(self, user_input):
         if  user_input[pygame.K_LEFT]:
@@ -27,20 +28,20 @@ class Spaceship:
 
     def move_left(self):
         if self.rect.left > 0:
-            self.rect.x -= 10
+            self.rect.x -= self.speed
         elif self.rect.left <= 0:
             self.rect.x = (SCREEN_WIDTH)
 
     def move_right(self):
         if self.rect.right < (SCREEN_WIDTH):
-            self.rect.x += 10
+            self.rect.x += self.speed
         elif self.rect.right >= (SCREEN_WIDTH):
             self.rect.x = 0        
 
     def move_up(self):
         if self.rect.y > (SCREEN_HEIGHT)//2:
-            self.rect.y -= 10   
+            self.rect.y -= self.speed  
 
     def move_down(self):
         if self.rect.y < (SCREEN_HEIGHT):
-            self.rect.y -= -10
+            self.rect.y -= -self.speed
