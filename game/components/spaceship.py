@@ -11,6 +11,7 @@ class Spaceship:
         self.rect.x = self.X_POS
         self.rect.y = self.Y_POS
         self.speed = 10
+        self.is_alive = True
 
     def upadte(self, user_input):
         if  user_input[pygame.K_LEFT]:

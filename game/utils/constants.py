@@ -26,11 +26,13 @@ BULLET = pygame.image.load(os.path.join(IMG_DIR, "Bullet/bullet_1.png"))
 
 BULLET_ENEMY = pygame.image.load(os.path.join(IMG_DIR, "Bullet/bullet_2.png"))
 ENEMY_1 = pygame.image.load(os.path.join(IMG_DIR, "Enemy/enemy_1.png"))
-ENEMY_2 = pygame.image.load(os.path.join(IMG_DIR, 'Enemy/enemy_2.png'))
-ENEMY_3 = pygame.image.load(os.path.join(IMG_DIR, 'Enemy/enemy_3.png'))
-ENEMY_4 = pygame.image.load(os.path.join(IMG_DIR, 'Enemy/enemy_4.png'))
+ALIEN = pygame.image.load(os.path.join(IMG_DIR, 'Enemy/alien.png'))
+PRINCESS = pygame.image.load(os.path.join(IMG_DIR, 'Enemy/princess.png'))
+GATRON = pygame.image.load(os.path.join(IMG_DIR, 'Enemy/gatron.png'))
 ITEM_SPEED = pygame.image.load(os.path.join(IMG_DIR, 'Other/item_speed.png'))
 
 
 
 FONT_STYLE = 'freesansbold.ttf'
+
+BULLET_ENEMY_TYPE = 'enemy'

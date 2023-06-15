@@ -13,6 +13,13 @@ class ItemSpeed(Item):
         self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGTH))
         super().__init__(self.image)
     
+       
+
+
+
+    
+
+    
   
   
           
