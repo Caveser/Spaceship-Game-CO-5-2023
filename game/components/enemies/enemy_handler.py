@@ -24,7 +24,10 @@ class EnemyHandler:
     
     def add_enemy(self):
         if len(self.enemies) < 2:
-            self.enemies.append(Ship())
+            self.enemies.append(Ship()) 
+            self.enemies.append(Gatron())
+            self.enemies.append(Princess())
+            self.enemies.append(Alien())
 
     def remove_enemy(self, enemy):
         self.enemies.remove(enemy)

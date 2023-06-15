@@ -9,6 +9,7 @@ class Gatron(Enemy):
     SPEED_X = 1
     SPEED_Y = 1
     INTERVAL = 200
+    SHOOTING_TIME = 50
 
     def __init__(self):
         self.image = GATRON
