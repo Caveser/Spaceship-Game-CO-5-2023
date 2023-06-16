@@ -24,6 +24,7 @@ class Game:
         self.bullet_handler = BulletHandler()
         self.player = Spaceship()
         self.score = 0 
+        self.max_score = 0
         self.number_death = 0
 
     def run(self):
@@ -48,11 +49,12 @@ class Game:
     def update(self):
         if self.playing:
             user_input = pygame.key.get_pressed()
-            self.player.update(user_input, self.bullet_handler)
+            self.player.update(user_input, self.bullet_handler, self.enemy_handler)
             self.item_handler.update()
             self.enemy_handler.update(self.bullet_handler)
             self.bullet_handler.update(self.player, self.enemy_handler.enemies)
             self.score = self.enemy_handler.number_enemy_destroyed
+            self.score_max()
             if not self.player.is_alive:
                 pygame.time.delay(300)
                 self.playing = False
@@ -89,12 +91,20 @@ class Game:
         else:
             text, text_rect = text_utils.get_message('Press any key to Restart', 30, WHITE_COLOR)
             score, score_rect = text_utils.get_message(f'Your score is: {self.score}', 30, WHITE_COLOR, height=SCREEN_HEIGHT//2 +50)
+            die, die_rect = text_utils.get_message(f'You die this number of times: {self.number_death}', 30, WHITE_COLOR, height=SCREEN_HEIGHT//2 +100)    
+            max_score, max_score_rect = text_utils.get_message(f'Your max score is: {self.max_score}', 30, WHITE_COLOR, height=SCREEN_HEIGHT//2 +150)    
             self.screen.blit(text, text_rect)
             self.screen.blit(score, score_rect)
+            self.screen.blit(die, die_rect)
+            self.screen.blit(max_score, max_score_rect)
 
     def draw_score(self):
         score, score_rect = text_utils.get_message(f'Your score is: {self.score}', 20, WHITE_COLOR, 1000, 40)
-        self.screen.blit(score, score_rect)    
+        self.screen.blit(score, score_rect)   
+
+    def score_max(self) :
+        if self.score > self.max_score:
+            self.max_score = self.score
 
     def reset(self):
         self.player.reset()

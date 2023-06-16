@@ -7,7 +7,7 @@ class Spaceship:
     X_POS = (SCREEN_WIDTH // 2) - 40
     Y_POS = 500
     SPEED = 10
-    SHOOTING_TIME = 10
+    SHOOTING_TIME = 5
 
     def __init__(self):
         self.image = SPACESHIP
@@ -18,7 +18,7 @@ class Spaceship:
         self.is_alive = True
         self.shooting_time = 0
 
-    def update(self, user_input, bullet_handler):
+    def update(self, user_input, bullet_handler, enemy_handler):
         self.shooting_time += 1
         if  user_input[pygame.K_LEFT]:
             self.move_left()
@@ -30,6 +30,7 @@ class Spaceship:
             self.move_down()
         if user_input[pygame.K_SPACE]:
             self.shoot(bullet_handler)
+        self.enemy_collide(enemy_handler)
         
     def draw(self, screen):
         screen.blit(self.image, self.rect)
@@ -57,6 +58,12 @@ class Spaceship:
     def shoot(self, bullet_handler):
         if self.shooting_time % self.SHOOTING_TIME == 0:
             bullet_handler.add_bullet(BULLET_SPACESHIP_TYPE, self.rect.center)
+
+    def enemy_collide(self, enemy_handler):
+        for enemy in enemy_handler.enemies:            
+            if self.rect.colliderect(enemy.rect):
+                enemy.is_alive = False
+                self.is_alive = False
 
     def reset(self):
         self.rect.x = self.X_POS

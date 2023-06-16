@@ -5,7 +5,7 @@ from game.utils.constants import BULLET, BULLET_SPACESHIP_TYPE
 class BulletSpaceship(Bullet):
     WIDTH = 10
     HEIGHT = 20
-    SPEED = 2
+    SPEED = 10
 
     def __init__(self, center):
         self.image = BULLET
