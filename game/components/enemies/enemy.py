@@ -51,7 +51,8 @@ class Enemy:
         self.index += 1
 
     def shoot(self, bullet_handler):
-        bullet_handler.add_bullet(BULLET_ENEMY_TYPE, self.rect.center)
+        if self.shooting_time % self.SHOOTING_TIME == 0:
+            bullet_handler.add_bullet(BULLET_ENEMY_TYPE, self.rect.center)
         
 
     

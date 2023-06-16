@@ -12,7 +12,7 @@ class Bullet:
         self.image = image
         self.type = type
         self.rect = self.image.get_rect()
-        self.center = center
+        self.rect.center = center
         self.is_alive = True
         self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
         SPEED = 20
@@ -23,4 +23,4 @@ class Bullet:
             self.is_alive = False
 
     def draw(self, screen):
-        screen.blit(self.image, self.rect)
+        screen.blit(self.image, self.rect.center)
