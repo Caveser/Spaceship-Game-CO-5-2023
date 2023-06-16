@@ -1,8 +1,7 @@
 import random
 import pygame
-
 from game.utils.constants import SCREEN_WIDTH, SCREEN_HEIGHT, BULLET_ENEMY_TYPE
-from game.components.bullets.bullet import Bullet
+
 class Enemy:
     X_POST_LIST = [50, 100, 150, 200, 250, 300, 350,400,450,500]
     Y_POS = 20
@@ -22,8 +21,9 @@ class Enemy:
         self.mov_x = random.choice(self.MOV_X)
         self.index = 0
         self.is_alive = True
+        self.is_destroyed = False
         self.shooting_time = 0
-        self.type = 'enemy'
+        
 
     def update(self, bullet_handler):
         if self.rect.y >= SCREEN_HEIGHT:
@@ -51,11 +51,7 @@ class Enemy:
         self.index += 1
 
     def shoot(self, bullet_handler):
-        current_time = pygame.time.get_ticks()
-        if self.shooting_time <= current_time:
-            bullet = Bullet(self)
-            bullet_handler.add_bullet(bullet)
-            self.shooting_time += random.randint(20, 50)
+        bullet_handler.add_bullet(BULLET_ENEMY_TYPE, self.rect.center)
         
 
     

@@ -1,34 +1,26 @@
 import pygame
 
-from game.utils.constants import SCREEN_HEIGHT, BULLET_ENEMY, BULLET
+from game.utils.constants import SCREEN_HEIGHT
 
 class Bullet:
 
     WIDTH = 9
     HEIGHT = 32
     SPEED = 20
-    BULLETS = {'player': BULLET, 'enemy': BULLET_ENEMY}
-
-
-    def __init__(self, spacechip):
-        self.image = self.BULLETS[spacechip.type]
-        self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
+   
+    def __init__(self, image, type, center):
+        self.image = image
+        self.type = type
         self.rect = self.image.get_rect()
-        self.rect.center = spacechip.rect.center
-        self.owner = spacechip.type
+        self.center = center
+        self.is_alive = True
+        self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
         SPEED = 20
     
-    def update(self, bullets):
-        if self.owner == 'enemy':
-            self.rect.y += self.SPEED
-            if self.rect.y >= SCREEN_HEIGHT:
-                bullets.remove(self)
-        if self.owner == 'player':
-            self.rect.y -= self.SPEED
-            if self.rect.y <= 0:
-                bullets.remove(self)
-  
-
+    def update(self, object):
+        if self.rect.colliderect(object.rect):
+            object.is_alive = False
+            self.is_alive = False
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)

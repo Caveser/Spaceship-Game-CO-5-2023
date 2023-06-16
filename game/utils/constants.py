@@ -35,5 +35,8 @@ ITEM_SPEED = pygame.image.load(os.path.join(IMG_DIR, 'Other/item_speed.png'))
 
 
 FONT_STYLE = 'freesansbold.ttf'
+BLACK_COLOR = (0, 0, 0)
+WHITE_COLOR = (255, 255, 255)
 
 BULLET_ENEMY_TYPE = 'enemy'
+BULLET_SPACESHIP_TYPE = 'spaceship'

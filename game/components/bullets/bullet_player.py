@@ -11,3 +11,7 @@ class BulletPlayer(Bullet):
         self.image = BULLET
         self.image = pygame.transform.scale(self.WIDTH, self.HEIGHT)
         super().__init__(self.image, center)
+
+
+    def reset(self):
+        self.bullets = []

@@ -6,15 +6,14 @@ from game.components.enemies.gatron import Gatron
 class EnemyHandler:
     def __init__(self):
         self.enemies = []
-        #self.enemies.append(Ship())
-        #self.enemies.append(Alien())
-        ##self.enemies.append(princess())
-        #self.enemies.append(Gatron())
+        self.number_enemy_destroyed = 0
 
     def update(self, bullet_handler):
         self.add_enemy()
         for enemy in self.enemies:
             enemy.update(bullet_handler)
+            if enemy.is_destroyed:
+                self.number_enemy_destroyed += 1
             if not enemy.is_alive:
                 self.remove_enemy(enemy)
     
@@ -23,7 +22,7 @@ class EnemyHandler:
             enemy.draw(screen)
     
     def add_enemy(self):
-        if len(self.enemies) < 2:
+        if len(self.enemies) < 5:
             self.enemies.append(Ship()) 
             self.enemies.append(Gatron())
             self.enemies.append(Princess())
@@ -31,3 +30,7 @@ class EnemyHandler:
 
     def remove_enemy(self, enemy):
         self.enemies.remove(enemy)
+    
+    def reset(self):
+        self.enemies = []
+        self.number_enemy_destroyed = 0
