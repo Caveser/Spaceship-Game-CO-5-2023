@@ -1,6 +1,6 @@
 import pygame
 
-from game.utils.constants import SCREEN_HEIGHT
+from game.utils.constants import SCREEN_HEIGHT, SHIELD_TYPE
 
 class Bullet:
 
@@ -21,6 +21,7 @@ class Bullet:
         if self.rect.colliderect(object.rect):
             object.is_alive = False
             self.is_alive = False
+           
 
     def draw(self, screen):
         screen.blit(self.image, self.rect.center)
