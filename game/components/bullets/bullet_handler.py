@@ -14,7 +14,8 @@ class BulletHandler:
             else:
                 if bullet.type == BULLET_ENEMY_TYPE:
                     bullet.update(player)
-                else:
+                    
+                if bullet.type == BULLET_SPACESHIP_TYPE:
                     for enemy in enemies:
                         bullet.update(enemy)
         

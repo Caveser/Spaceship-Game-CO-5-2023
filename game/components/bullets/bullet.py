@@ -1,13 +1,12 @@
 import pygame
 
 from game.utils.constants import SCREEN_HEIGHT, SHIELD_TYPE
-
 class Bullet:
 
     WIDTH = 9
     HEIGHT = 32
     SPEED = 20
-   
+
     def __init__(self, image, type, center):
         self.image = image
         self.type = type
@@ -15,7 +14,7 @@ class Bullet:
         self.rect.center = center
         self.is_alive = True
         self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
-        SPEED = 20
+       
     
     def update(self, object):
         if self.rect.colliderect(object.rect):

@@ -79,6 +79,6 @@ class Spaceship:
         self.image = image
         self.image = pygame.transform.scale(self.image, (40, 60))
     
-    def set_default_image(self, image):
+    def set_default_image(self):
         self.image = SPACESHIP
         self.image = pygame.transform.scale(self.image, (40, 60))
