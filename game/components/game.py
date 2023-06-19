@@ -3,10 +3,10 @@ import pygame
 from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, WHITE_COLOR, DEFAULT_TYPE
 from game.components.spaceship import Spaceship
 from game.components.enemies.enemy_handler import EnemyHandler
-from game.components.items.item_handler import ItemHandler
 from game.components.bullets.bullet_handler import BulletHandler
 from game.components import text_utils
 from game.components.powers.power_handler import PowerHandler
+
 
 class Game:
     def __init__(self):
@@ -21,7 +21,6 @@ class Game:
         self.x_pos_bg = 0
         self.y_pos_bg = 0     
         self.enemy_handler = EnemyHandler()
-        self.item_handler = ItemHandler()
         self.bullet_handler = BulletHandler()
         self.player = Spaceship()
         self.score = 0 
@@ -36,7 +35,8 @@ class Game:
         while self.running:
             self.events()
             self.update()
-            self.draw()            
+            self.draw()    
+
 
 
     def events(self):
@@ -45,6 +45,8 @@ class Game:
                     self.running = False           
                     self.playing = False
                 elif event.type == pygame.KEYDOWN and not(self.playing):
+                    pygame.mixer.music.load('game/assets/Sound/music.mp3')
+                    pygame.mixer.music.play(4)
                     self.playing = True
                     self.reset()
 
@@ -52,7 +54,6 @@ class Game:
         if self.playing:
             user_input = pygame.key.get_pressed()
             self.player.update(user_input, self.bullet_handler, self.enemy_handler)
-            self.item_handler.update()
             self.enemy_handler.update(self.bullet_handler)
             self.bullet_handler.update(self.player, self.enemy_handler.enemies)
             self.score = self.enemy_handler.number_enemy_destroyed
@@ -69,9 +70,9 @@ class Game:
             self.clock.tick(FPS)
             self.player.draw(self.screen)
             self.enemy_handler.draw(self.screen)
-            self.item_handler.draw(self.screen)
             self.bullet_handler.draw(self.screen)
             self.power_handler.draw(self.screen)
+            self.player.life.draw(self.screen)
             self.draw_score()
             self.draw_power_time()
         else:
@@ -90,6 +91,7 @@ class Game:
         self.y_pos_bg += self.game_speed
 
     def draw_menu(self):
+        pygame.mixer.music.stop()
         if self.number_death == 0:
             text, text_rect = text_utils.get_message('Press any key to Start', 30, WHITE_COLOR)
             self.screen.blit(text, text_rect)
@@ -121,6 +123,7 @@ class Game:
             else:
                 self.player.has_power = False
                 self.player.power_type = DEFAULT_TYPE
+                self.player.actual_speed = self.player.SPEED
                 self.player.set_default_image()
 
 
@@ -131,3 +134,4 @@ class Game:
         self.enemy_handler.reset()
         self.bullet_handler.reset()
         self.score = 0
+        self.power_handler.reset()

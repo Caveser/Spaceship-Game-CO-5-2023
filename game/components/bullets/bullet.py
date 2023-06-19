@@ -1,6 +1,7 @@
 import pygame
 
 from game.utils.constants import SCREEN_HEIGHT, SHIELD_TYPE
+
 class Bullet:
 
     WIDTH = 9
@@ -18,7 +19,7 @@ class Bullet:
     
     def update(self, object):
         if self.rect.colliderect(object.rect):
-            object.is_alive = False
+            object.life.update(object)
             self.is_alive = False
            
 

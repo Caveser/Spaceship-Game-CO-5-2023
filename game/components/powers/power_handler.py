@@ -1,7 +1,7 @@
 import pygame
 import random
 from game.components.powers.shield import Shield
-from game.utils.constants import SPACESHIP_SHIELD
+from game.components.powers.speed import Speed
 
 class PowerHandler:
 
@@ -11,8 +11,10 @@ class PowerHandler:
         self.duration = random.randint(3, 5)
 
     def generate_power(self):
-        power = Shield()
-        self.powers.append(power)
+        shield = Shield()
+        speed = Speed()
+        self.powers.append(shield)
+        self.powers.append(speed)
         self.when_appears += random.randint(3000, 7000)
 
     def update(self, player):
@@ -28,8 +30,13 @@ class PowerHandler:
                 player.power_type = power.type
                 player.has_power = True
                 player.power_time = power.start_time + (self.duration * 1000)
-                player.set_power_image(SPACESHIP_SHIELD)
+                player.set_power_image(power.spaceship_image)
 
     def draw(self, screen):
         for power in self.powers:
             power.draw(screen)
+
+    def reset (self):
+        self.powers = []
+        self.when_appears += random.randint(3000, 7000)
+        now = pygame.time.get_ticks()

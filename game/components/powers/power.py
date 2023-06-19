@@ -8,13 +8,15 @@ class Power:
     POWER_HEIGHT = 30
     POWER_SPEED = 10
 
-    def __init__(self, image, type):
+    def __init__(self, image, type, spaceship_image):
         self.image = image
+        self.spaceship_image = spaceship_image
         self.type = type
         self.image = pygame.transform.scale(self.image, (self.POWER_WIDTH, self.POWER_HEIGHT))
         self.rect = self.image.get_rect()
         self.rect.x = random.randint(120, SCREEN_WIDTH -120)
         self.rect.y = 0
+        
 
     def update(self):
         self.rect.y += self.POWER_SPEED

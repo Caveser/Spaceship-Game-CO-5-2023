@@ -17,9 +17,11 @@ BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
-DEFAULT_TYPE = "default"
+DEFAULT_TYPE = 'default'
 SHIELD_TYPE = 'shield'
+SPEED_TYPE = 'speed'
 
+SPACESHIP_SPEED = pygame.image.load(os.path.join(IMG_DIR, 'Other/spaceship_speed.png'))
 SPACESHIP = pygame.image.load(os.path.join(IMG_DIR, "Spaceship/spaceship.png"))
 SPACESHIP_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Spaceship/spaceship_shield.png"))
 BULLET = pygame.image.load(os.path.join(IMG_DIR, "Bullet/bullet_1.png"))
@@ -29,8 +31,12 @@ BULLET_GATRON = pygame.image.load(os.path.join(IMG_DIR, "Bullet/bullet_gatron.pn
 ENEMY_1 = pygame.image.load(os.path.join(IMG_DIR, "Enemy/enemy_1.png"))
 ALIEN = pygame.image.load(os.path.join(IMG_DIR, 'Enemy/alien.png'))
 PRINCESS = pygame.image.load(os.path.join(IMG_DIR, 'Enemy/princess.png'))
-GATRON = pygame.image.load(os.path.join(IMG_DIR, 'Enemy/gatron.png'))
-ITEM_SPEED = pygame.image.load(os.path.join(IMG_DIR, 'Other/item_speed.png'))
+BOSS = pygame.image.load(os.path.join(IMG_DIR, 'Enemy/gatron.png'))
+SPEED = pygame.image.load(os.path.join(IMG_DIR, 'Other/speed.png'))
+LIFE_BAR_1 = pygame.image.load(os.path.join(IMG_DIR, 'Other/life_bar_1.png'))
+LIFE_BAR_2  = pygame.image.load(os.path.join(IMG_DIR, 'Other/life_bar_2.png'))
+LIFE_BAR_3  = pygame.image.load(os.path.join(IMG_DIR, 'Other/life_bar_3.png'))
+LIFE_BAR_4  = pygame.image.load(os.path.join(IMG_DIR, 'Other/life_bar_4.png'))
 
 
 
@@ -40,3 +46,8 @@ WHITE_COLOR = (255, 255, 255)
 
 BULLET_ENEMY_TYPE = 'enemy'
 BULLET_SPACESHIP_TYPE = 'spaceship'
+
+
+pygame.mixer.init()
+SHOOT_SPACESHIP = pygame.mixer.Sound(os.path.join(IMG_DIR, "Sound/spaceship_shoot.mp3"))
+ENEMY_SHOOT = pygame.mixer.Sound(os.path.join(IMG_DIR, "Sound/enemy_shoot.mp3"))

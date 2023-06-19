@@ -1,7 +1,7 @@
 from game.components.powers.power import Power
-from game.utils.constants import SHIELD, SHIELD_TYPE
+from game.utils.constants import SHIELD, SHIELD_TYPE, SPACESHIP_SHIELD
 
 class Shield(Power):
 
     def __init__(self):
-        super().__init__(SHIELD, SHIELD_TYPE)
+        super().__init__(SHIELD, SHIELD_TYPE, SPACESHIP_SHIELD)

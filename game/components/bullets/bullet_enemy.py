@@ -1,4 +1,5 @@
 import pygame
+
 from game.components.bullets.bullet import Bullet
 from game.utils.constants import BULLET_ENEMY, BULLET_ENEMY_TYPE, SCREEN_HEIGHT, SHIELD_TYPE
 
