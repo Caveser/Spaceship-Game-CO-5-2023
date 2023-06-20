@@ -10,7 +10,7 @@ class Alien(Enemy):
     Y_POS = 20
     SPEED_X = 5
     SPEED_Y = 5
-    INTERVAL = 5
+    INTERVAL = 1
 
     def __init__(self):
         self.image = ALIEN

@@ -1,5 +1,5 @@
 import pygame
-from game.utils.constants import BULLET_ENEMY_TYPE, SCREEN_HEIGHT, BULLET_SPACESHIP_TYPE, SHOOT_SPACESHIP, ENEMY_SHOOT
+from game.utils.constants import BULLET_ENEMY_TYPE, BULLET_SPACESHIP_TYPE, SHOOT_SPACESHIP, ENEMY_SHOOT
 from game.components.bullets.bullet_spaceship import BulletSpaceship
 from game.components.bullets.bullet_enemy import BulletEnemy
 

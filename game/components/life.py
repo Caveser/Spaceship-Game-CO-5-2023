@@ -1,5 +1,5 @@
 import pygame
-from game.utils.constants import SPACESHIP, LIFE_BAR_1, LIFE_BAR_2, LIFE_BAR_3, LIFE_BAR_4, SCREEN_WIDTH
+from game.utils.constants import LIFE_BAR_1, LIFE_BAR_2, LIFE_BAR_3, LIFE_BAR_4, SCREEN_WIDTH
 
 class Life():
     LIFE_BAR = [LIFE_BAR_1, LIFE_BAR_2, LIFE_BAR_3, LIFE_BAR_4]
@@ -10,7 +10,7 @@ class Life():
         
 
     def update(self, player):
-        self.life -= 1
+        self.life -= 1       
         if self.life <= 0:
              player.is_alive = False
        

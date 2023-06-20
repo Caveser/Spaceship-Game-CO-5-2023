@@ -1,5 +1,5 @@
 import pygame
-import random
+
 from game.utils.constants import SPACESHIP, SCREEN_WIDTH, SCREEN_HEIGHT, BULLET_SPACESHIP_TYPE, DEFAULT_TYPE, SHIELD_TYPE, SPEED_TYPE
 from game.components.life import Life
 
@@ -75,8 +75,6 @@ class Spaceship:
                     enemy.life.update(enemy)
                     self.life.update(self)
                 else:
-                    #enemy_handler.number_enemy_destroyed += 1
-                    #enemy_handler.remove_enemy(enemy)
                     enemy.life.update(enemy)
     
     def speed_boost(self):

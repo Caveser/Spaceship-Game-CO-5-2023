@@ -1,7 +1,5 @@
 import pygame
 
-from game.utils.constants import SCREEN_HEIGHT, SHIELD_TYPE
-
 class Bullet:
 
     WIDTH = 9

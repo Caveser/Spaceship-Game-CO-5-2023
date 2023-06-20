@@ -54,7 +54,6 @@ class EnemyHandler:
                 self.enemies.append(Princess())
                 self.enemies.append(Princess())
                 self.enemies.append(Princess())
-                self.enemies.append(Princess())
             self.when_appears_princess += random.randint(10000, 20000)
 
 
